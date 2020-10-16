@@ -12,7 +12,7 @@ defmodule Slurpee.MixProject do
       aliases: aliases(),
       deps: deps(),
       preferred_cli_env: [
-        "test.docker": :test,
+        "test.docker": :test
       ]
     ]
   end
@@ -55,15 +55,28 @@ defmodule Slurpee.MixProject do
       setup: ["deps.get", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      test: &test/1,
+      "test.base": ["ecto.create --quiet", "ecto.migrate --quiet", "test", "--color"],
       "test.docker": &test_docker/1
     ]
   end
 
+  defp test(_) do
+    if System.get_env("DOCKER") == "true" do
+      IO.puts("-------------- TEST DOCKER=true")
+      Mix.Task.run("test.docker")
+    else
+      IO.puts("-------------- TEST DOCKER=false")
+      Mix.Task.run("test.base")
+    end
+  end
+
   defp test_docker(_) do
+    IO.puts("************ test_docker")
+
     System.cmd(
       "docker-compose",
-      ["run", "-e", "MIX_ENV=test", "web", "mix", "test", "--color"],
+      ["run", "-e", "MIX_ENV=test", "web", "mix", "test.base"],
       into: IO.stream(:stdio, :line)
     )
   end
