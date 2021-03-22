@@ -1,0 +1,28 @@
+<div class="flex justify-between mt-4">
+  <h2 class="text-3xl">Transaction Subscriptions</h2>
+</div>
+
+<table class="w-full mt-4">
+  <thead>
+    <tr>
+      <th scope="col" class="px-4 py-2">Blockchain ID</th>
+      <th scope="col" class="px-4 py-2">Enabled</th>
+      <th scope="col" class="px-4 py-2">Handler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= if Enum.count(@transaction_subscriptions) == 0 do %>
+      <tr>
+        <td colspan="3" class="border px-4 py-2">no transaction subscriptions configured</td>
+      </tr>
+    <% else %>
+      <%= for s <- @transaction_subscriptions do %>
+        <tr>
+          <th scope="row" class="border px-4 py-2"><%= s.blockchain_id %></th>
+          <td class="border px-4 py-2 <%= !s.enabled && "text-muted"%>"><%= s.enabled %></td>
+          <td class="border px-4 py-2 <%= !s.enabled && "text-muted"%>"><%= s.handler |> inspect %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

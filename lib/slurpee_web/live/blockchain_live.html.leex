@@ -1,0 +1,56 @@
+<div class="flex justify-between mt-4">
+  <h2 class="text-3xl">Blockchains</h2>
+  <div>
+    <%= if @blockchains |> Enum.filter(& &1.status == :running) |> Enum.count() < @blockchains |> Enum.count() do %>
+      <button phx-click="start-all" type="button" class="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">start all</button>
+    <% end %>
+    <%= if @blockchains |> Enum.filter(& &1.status == :running) |> Enum.count() > 0 do %>
+      <button phx-click="stop-all" type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">stop all</button>
+    <% end %>
+  </div>
+</div>
+
+<table class="w-full mt-4">
+  <thead>
+    <tr>
+      <th scope="col" class="px-4 py-2">ID</th>
+      <th scope="col" class="px-4 py-2">Name</th>
+      <th scope="col" class="px-4 py-2">Status</th>
+      <th scope="col" class="px-4 py-2">Network ID</th>
+      <th scope="col" class="px-4 py-2">Chain ID</th>
+      <th scope="col" class="px-4 py-2">Chain</th>
+      <th scope="col" class="px-4 py-2">Testnet</th>
+      <th scope="col" class="px-4 py-2">RPC</th>
+      <th scope="col" class="px-4 py-2">Latest Block</th>
+      <th scope="col" class="px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= if Enum.count(@blockchains) == 0 do %>
+      <tr>
+        <td colspan="10" class="border px-4 py-2">no blockchains configured</td>
+      </tr>
+    <% else %>
+      <%= for b <- @blockchains do %>
+        <tr>
+          <th scope="row" class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.id %></th>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.name %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.status %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.network_id %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.chain_id %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.chain %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.testnet %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>"><%= b.rpc %></td>
+          <td class="border px-4 py-2 <%= !running?(b) && "text-gray-400"%>">-</td>
+          <td class="border px-4 py-2">
+            <%= if b.status == :running do %>
+              <button phx-click="stop" phx-value-id="<%= b.id %>" type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">stop</button>
+            <% else %>
+              <button phx-click="start" phx-value-id="<%= b.id %>" type="button" class="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded">start</button>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

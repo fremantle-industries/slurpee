@@ -1,0 +1,75 @@
+<div class="overview-stats grid grid-cols-3 mt-4">
+  <div class="text-center">
+    <div class="overview-stats__last-block-received-at">
+      last block:
+      <%= if @last_head_received_at do %>
+        <%= live_react_component(
+          "Components.TimeAgo",
+          [date: last_head_received_at(@last_head_received_at), maxPeriod: 1],
+          receiver_tag: "span",
+          container_tag: "span",
+          id: "last-block-received-at"
+        ) %>
+      <% else %>
+        -
+      <% end %>
+    </div>
+  </div>
+  <div class="text-center">
+    <div title="time between blocks in seconds">
+      block cadence: <%= @block_cadence_seconds %>s
+    </div>
+  </div>
+  <div class="text-center">
+    <div title="events per second">
+      events/s: <%= @events_per_second %>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 space-x-4 mt-4">
+  <div>
+    <h2 class="text-3xl text-center mb-4">Recent Blocks</h2>
+    <ul class="space-y-1">
+      <%= if Enum.count(@recent_blocks) == 0 do %>
+        <li>
+          waiting for new blocks...
+        </li>
+      <% else %>
+        <%= for {blockchain_id, block_number} <- @recent_blocks do %>
+          <li class="flex flex-row justify-between border px-2 py-4">
+            <div><%= blockchain_id %></div>
+            <div>
+              <%= component :block_number, "pill.html", block_number: block_number %>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="space-y-1">
+    <h2 class="text-3xl text-center mb-4">Recent Events</h2>
+    <%= if Enum.count(@recent_events) == 0 do %>
+      <div class="border px-2 py-4">waiting for new event logs...</div>
+    <% else %>
+      <%= for {blockchain_id, block_number, block_hash, address, %event_name{} = event} <- @recent_events do %>
+        <div class="border px-2 py-4">
+          <h5 class="text-xl"><%= event_name %></h5>
+          <div class="flex flex-row justify-between py-2">
+            <span class="text-gray-400"><%= blockchain_id %></span>
+            <%= component :block_number, "pill.html", block_number: block_number %>
+          </div>
+          <p>
+            block hash: <%= block_hash %><br />
+            address: <%= address %><br />
+            <%= for k <- Map.keys(event) do %>
+              <%= if k != :__struct__ do %>
+                <%= k %>: <%= event |> Map.get(k) |> format_event_attr %><br />
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
