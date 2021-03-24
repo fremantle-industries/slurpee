@@ -120,7 +120,7 @@ config :slurp,
     },
     "avalanche-mainnet" => %{
       start_on_boot: false,
-      name: "Matic Mainnet",
+      name: "Avalanche Mainnet",
       adapter: Slurp.Adapters.Evm,
       network_id: 43114,
       chain_id: 43114,
