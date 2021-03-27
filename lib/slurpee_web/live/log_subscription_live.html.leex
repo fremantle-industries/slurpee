@@ -15,11 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= if Enum.count(@log_subscriptions) == 0 do %>
-      <tr>
-        <td colspan="7" class="border px-4 py-2">no log subscriptions configured</td>
-      </tr>
-    <% else %>
+    <%= if Enum.any?(@log_subscriptions) do %>
       <%= for s <- @log_subscriptions do %>
         <tr>
           <th scope="row" class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.blockchain_id %></th>
@@ -31,6 +27,10 @@
           <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.abi |> Enum.count() %></td>
         </tr>
       <% end %>
+    <% else %>
+      <tr>
+        <td colspan="7" class="border px-4 py-2">no log subscriptions configured</td>
+      </tr>
     <% end %>
   </tbody>
 </table>
