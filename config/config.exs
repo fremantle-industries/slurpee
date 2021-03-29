@@ -23,6 +23,39 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Navigation
+config :navigator,
+  links: %{
+    slurpee: [
+      %{
+        label: "Slurpee",
+        link:
+          {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
+        class: "text-4xl"
+      },
+      %{
+        label: "Blockchains",
+        link:
+          {SlurpeeWeb.Router.Helpers, :blockchain_path, [SlurpeeWeb.Endpoint, :index]},
+      },
+      %{
+        label: "Log Subscriptions",
+        link:
+          {SlurpeeWeb.Router.Helpers, :log_subscription_path, [SlurpeeWeb.Endpoint, :index]},
+      },
+      %{
+        label: "New Head Subscriptions",
+        link:
+          {SlurpeeWeb.Router.Helpers, :new_head_subscription_path, [SlurpeeWeb.Endpoint, :index]},
+      },
+      %{
+        label: "Transaction Subscriptions",
+        link:
+          {SlurpeeWeb.Router.Helpers, :transaction_subscription_path, [SlurpeeWeb.Endpoint, :index]},
+      },
+    ]
+  }
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

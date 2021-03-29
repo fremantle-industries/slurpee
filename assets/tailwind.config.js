@@ -10,9 +10,11 @@ module.exports = {
         extend: {},
     },
     variants: {
+        display: ['responsive', 'empty'],
         extend: {},
     },
     plugins: [
         require('@tailwindcss/forms'),
+        require('tailwindcss-empty-pseudo-class')()
     ],
 }
