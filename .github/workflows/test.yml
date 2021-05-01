@@ -33,9 +33,9 @@ jobs:
             deps
             _build/dev
             _build/test
-          key: elixir-cache-${{secrets.CACHE_VERSION}}-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-${{github.ref}}
+          key: elixir-cache-${{secrets.CACHE_VERSION}}-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-${{hashFiles('assets/package-lock.json')}}-${{github.ref}}
           restore-keys: |
-            elixir-cache-${{secrets.CACHE_VERSION}}-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-
+            elixir-cache-${{secrets.CACHE_VERSION}}-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-${{hashFiles('mix.lock')}}-${{hashFiles('assets/package-lock.json')}}
             elixir-cache-${{secrets.CACHE_VERSION}}-${{matrix.elixir}}-otp-${{matrix.otp}}-${{runner.os}}-
 
       - name: Install Dependencies
