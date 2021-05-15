@@ -44,7 +44,7 @@
     "tailwindcss": "^2.1.2",
     "tailwindcss-empty-pseudo-class": "^1.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "ts-loader": "^9.1.1",
+    "ts-loader": "^9.1.2",
     "typescript": "^4.2.4",
     "webpack": "5.35.1",
     "webpack-cli": "^4.6.0"
