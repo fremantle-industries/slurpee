@@ -35,7 +35,7 @@
     "hard-source-webpack-plugin": "^0.13.1",
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
     "postcss": "^8.2.15",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^5.3.0",
