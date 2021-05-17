@@ -3,12 +3,12 @@ updates:
 - package-ecosystem: mix
   directory: "/"
   schedule:
-    interval: weekly
+    interval: monthly
   open-pull-requests-limit: 10
 - package-ecosystem: npm
   directory: "/assets"
   schedule:
-    interval: weekly
+    interval: monthly
   open-pull-requests-limit: 10
 - package-ecosystem: github-actions
   directory: "/"
