@@ -36,7 +36,7 @@
           <li class="flex flex-row justify-between border px-2 py-4">
             <div><%= blockchain_id %></div>
             <div>
-              <%= component :block_number, "pill.html", block_number: block_number %>
+              <%= component &SlurpeeWeb.BlockNumberComponent.pill/1, block_number: block_number %>
             </div>
           </li>
         <% end %>
@@ -55,7 +55,7 @@
           <h5 class="text-xl"><%= event_name %></h5>
           <div class="flex flex-row justify-between py-2">
             <span class="text-gray-400"><%= blockchain_id %></span>
-            <%= component :block_number, "pill.html", block_number: block_number %>
+            <%= component &SlurpeeWeb.BlockNumberComponent.pill/1, block_number: block_number %>
           </div>
           <p>
             block hash: <%= block_hash %><br />

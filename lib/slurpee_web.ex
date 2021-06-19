@@ -105,7 +105,6 @@ defmodule SlurpeeWeb do
 
       import SlurpeeWeb.ErrorHelpers
       import SlurpeeWeb.Gettext
-      import SlurpeeWeb.Components.ComponentHelpers
       alias SlurpeeWeb.Router.Helpers, as: Routes
     end
   end
