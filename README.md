@@ -33,7 +33,7 @@ Add the slurpee phoenix endpoint to your config
 ```elixir
 config :slurpee, SlurpeeWeb.Endpoint,
   http: [port: 4000],
-  url: [host: "slurpee.lvh.me", port: "4000"],
+  url: [host: "slurpee.localhost", port: "4000"],
 ```
 
 ## Embedding slurpee in your own Elixir project
@@ -49,7 +49,7 @@ as servers on different ports
 config :my_app, MyAppWeb.Endpoint,
   pubsub_server: MyApp.PubSub,
   http: [port: 4000],
-  url: [host: "my-app.lvh.me", port: "4000"],
+  url: [host: "my-app.localhost", port: "4000"],
   live_view: [signing_salt: "aolmUusQ6//zaa5GZHu7DG2V3YAgOoP/"],
   secret_key_base: "vKt36v4Gi2Orw8b8iBRg6ZFdzXKLvcRYkk1AaMLYX0+ry7k5XaJXd/LY/itmoxPP",
   server: true
@@ -57,7 +57,7 @@ config :my_app, MyAppWeb.Endpoint,
 config :slurpee, SlurpeeWeb.Endpoint,
   pubsub_server: Slurpee.PubSub,
   http: [port: 4001],
-  url: [host: "slurpee.lvh.me", port: "4001"],
+  url: [host: "slurpee.localhost", port: "4001"],
   live_view: [signing_salt: "aolmUusQ6//zaa5GZHu7DG2V3YAgOoP/"],
   secret_key_base: "xKt36v4Gi2Orw8b8iBRg6ZFdzXKLvcRYkk1AaMLYX0+ry7k5XaJXd/LY/itmoxPP",
   server: true
@@ -99,11 +99,11 @@ config :master_proxy,
   # https: [:inet6, port: 4443],
   backends: [
     %{
-      host: ~r/my-app.lvh.me/,
+      host: ~r/my-app.localhost/,
       phoenix_endpoint: MyAppWeb.Endpoint
     },
     %{
-      host: ~r/slurpee.lvh.me/,
+      host: ~r/slurpee.localhost/,
       phoenix_endpoint: SlurpeeWeb.Endpoint
     }
   ]
@@ -124,7 +124,7 @@ Or within `docker-compose`
 $ docker-compose up
 ```
 
-Wait a few seconds for the app to boot and you should be able to view the app at `http://slurpee.lvh.me:4000`
+Wait a few seconds for the app to boot and you should be able to view the app at `http://slurpee.localhost:4000`
 
 ## Test
 
