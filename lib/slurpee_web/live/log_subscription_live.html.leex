@@ -2,34 +2,34 @@
   <h2 class="text-3xl">Log Subscriptions</h2>
 </div>
 
-<table class="w-full mt-4">
-  <thead>
+<table class="w-full mt-8">
+  <thead class="bg-gray-200 border-t-2 border-gray-400">
     <tr>
-      <th scope="col" class="px-4 py-2">Blockchain ID</th>
-      <th scope="col" class="px-4 py-2">Event Signature</th>
-      <th scope="col" class="px-4 py-2">Hashed Event Signature</th>
-      <th scope="col" class="px-4 py-2">Enabled</th>
-      <th scope="col" class="px-4 py-2">Struct</th>
-      <th scope="col" class="px-4 py-2">Handler</th>
-      <th scope="col" class="px-4 py-2">ABI</th>
+      <th scope="col" class="w-4/36 px-4 py-2 text-left">Blockchain ID</th>
+      <th scope="col" class="w-8/36 px-4 py-2 text-left">Event Signature</th>
+      <th scope="col" class="w-5/36 px-4 py-2 text-left">Hashed Event Signature</th>
+      <th scope="col" class="w-2/36 px-4 py-2 text-left">Enabled</th>
+      <th scope="col" class="w-8/36 px-4 py-2 text-left">Struct</th>
+      <th scope="col" class="w-8/36 px-4 py-2 text-left">Handler</th>
+      <th scope="col" class="w-1/36 px-4 py-2 text-left">ABI</th>
     </tr>
   </thead>
   <tbody>
     <%= if Enum.any?(@log_subscriptions) do %>
       <%= for s <- @log_subscriptions do %>
-        <tr>
-          <th scope="row" class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.blockchain_id %></th>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.event_signature %></td>
-          <td title="<%= s.hashed_event_signature %>" class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.hashed_event_signature |> String.slice(0..18) %>...</td>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.struct %></td>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.handler |> inspect %></td>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.abi |> Enum.count() %></td>
+        <tr class="hover:bg-gray-50 border-t border-b group">
+          <td scope="row" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.blockchain_id %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.event_signature %></td>
+          <td title="<%= s.hashed_event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.hashed_event_signature |> String.slice(0..18) %>...</td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.struct %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.handler |> inspect %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.abi |> Enum.count() %></td>
         </tr>
       <% end %>
     <% else %>
-      <tr>
-        <td colspan="7" class="border px-4 py-2">no log subscriptions configured</td>
+      <tr class="hover:bg-gray-50 border-t border-b group">
+        <td colspan="7" class="px-4 py-3">no log subscriptions configured</td>
       </tr>
     <% end %>
   </tbody>
