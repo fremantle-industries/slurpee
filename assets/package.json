@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "deploy": "NODE_ENV=production webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "watch": "NODE_ENV=development webpack --mode development --watch"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
@@ -34,13 +34,11 @@
     "css-loader": "^5.2.6",
     "hard-source-webpack-plugin": "^0.13.1",
     "mini-css-extract-plugin": "^1.6.0",
-    "node-sass": "^6.0.0",
     "optimize-css-assets-webpack-plugin": "^6.0.0",
     "postcss": "^8.3.0",
     "postcss-import": "^14.0.2",
     "postcss-loader": "^5.3.0",
     "postcss-preset-env": "^6.7.0",
-    "sass-loader": "^11.1.1",
     "tailwindcss": "^2.1.2",
     "tailwindcss-empty-pseudo-class": "^1.0.0",
     "terser-webpack-plugin": "^5.1.3",
