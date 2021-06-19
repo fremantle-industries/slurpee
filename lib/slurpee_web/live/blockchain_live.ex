@@ -73,4 +73,14 @@ defmodule SlurpeeWeb.BlockchainLive do
 
   defp running?(%Slurp.Commander.Blockchains.ListItem{status: :running}), do: true
   defp running?(_), do: false
+
+  defp none_running?(blockchains), do: running_count(blockchains) == 0
+
+  defp all_running?(blockchains), do: running_count(blockchains) == length(blockchains)
+
+  defp running_count(blockchains) do
+    blockchains
+    |> Enum.filter(&running?/1)
+    |> Enum.count()
+  end
 end
