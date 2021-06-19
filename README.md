@@ -21,7 +21,7 @@ Add `slurpee` to your list of dependencies in `mix.exs`
 ```elixir
 def deps do
   [
-    {:slurpee, "~> 0.0.3"}
+    {:slurpee, "~> 0.0.4"}
   ]
 end
 ```
@@ -68,7 +68,9 @@ config :slurpee, SlurpeeWeb.Endpoint,
 ```elixir
 # mix.exs
 def deps do
-  [{:master_proxy, "~> 0.1"}]
+  [
+    {:master_proxy, "~> 0.1"}
+  ]
 end
 ```
 
