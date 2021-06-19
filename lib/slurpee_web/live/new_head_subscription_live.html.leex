@@ -2,26 +2,26 @@
   <h2 class="text-3xl">New Head Subscriptions</h2>
 </div>
 
-<table class="w-full mt-4">
-  <thead>
+<table class="w-full mt-8">
+  <thead class="bg-gray-200 border-t-2 border-gray-400">
     <tr>
-      <th scope="col" class="px-4 py-2">Blockchain ID</th>
-      <th scope="col" class="px-4 py-2">Enabled</th>
-      <th scope="col" class="px-4 py-2">Handler</th>
+      <th scope="col" class="w-3/12 px-4 py-2 text-left">Blockchain ID</th>
+      <th scope="col" class="w-1/12 px-4 py-2 text-left">Enabled</th>
+      <th scope="col" class="w-8/12 px-4 py-2 text-left">Handler</th>
     </tr>
   </thead>
   <tbody>
     <%= if Enum.any?(@new_head_subscriptions) do %>
       <%= for s <- @new_head_subscriptions do %>
-        <tr>
-          <th scope="row" class="border px-4 py-2"><%= s.blockchain_id %></th>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
-          <td class="border px-4 py-2 <%= !s.enabled && "text-gray-400"%>"><%= s.handler |> inspect %></td>
+        <tr class="hover:bg-gray-50 border-t border-b group">
+          <td scope="row" class="px-4 py-3"><%= s.blockchain_id %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.handler |> inspect %></td>
         </tr>
       <% end %>
     <% else %>
-      <tr>
-        <td colspan="3" class="border px-4 py-2">no new head subscriptions configured</td>
+      <tr class="hover:bg-gray-50 border-t border-b group">
+        <td colspan="3" class="px-4 py-3">no new head subscriptions configured</td>
       </tr>
     <% end %>
   </tbody>
