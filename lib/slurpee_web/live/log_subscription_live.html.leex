@@ -23,7 +23,7 @@
       <%= for s <- @log_subscriptions do %>
         <tr class="hover:bg-gray-50 border-t border-b group">
           <td scope="row" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.blockchain_id %></td>
-          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.event_signature %></td>
+          <td title="<%= s.event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= ellipsis(s.event_signature, 50) %></td>
           <td title="<%= s.hashed_event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.hashed_event_signature |> String.slice(0..18) %>...</td>
           <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
           <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.struct %></td>
