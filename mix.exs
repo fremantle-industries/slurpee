@@ -39,7 +39,7 @@ defmodule Slurpee.MixProject do
       {:phoenix_live_react, "~> 0.4"},
       {:phoenix_live_view, "~> 0.15"},
       {:plug_cowboy, "~> 2.0"},
-      {:slurp, "~> 0.0.4"},
+      {:slurp, "~> 0.0.5"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:excoveralls, "~> 0.8", only: :test},
