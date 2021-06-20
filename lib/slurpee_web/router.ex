@@ -23,4 +23,13 @@ defmodule SlurpeeWeb.Router do
     live "/new_head_subscriptions", NewHeadSubscriptionLive, :index
     live "/transactions", TransactionSubscriptionLive, :index
   end
+
+  scope "/", NotifiedPhoenix do
+    pipe_through :browser
+
+    live("/notifications", ListLive, :index,
+      as: :notification,
+      layout: {SlurpeeWeb.LayoutView, :root}
+    )
+  end
 end

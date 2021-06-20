@@ -19,13 +19,13 @@ import {LiveSocket} from "phoenix_live_view"
 
 // LiveReact
 // @ts-ignore
-import LiveReact, {initLiveReact} from "phoenix_live_react"
+import {initLiveReact} from "phoenix_live_react"
 import {Components} from "./components"
 // @ts-ignore
 window.Components = Components
 document.addEventListener("DOMContentLoaded", () => initLiveReact())
 
-let hooks = {LiveReact}
+import {hooks} from "./hooks"
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks})
 

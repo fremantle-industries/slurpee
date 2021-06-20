@@ -62,6 +62,13 @@ config :navigator,
     ]
   }
 
+# Notifications
+config :notified, pubsub_server: Slurpee.PubSub
+config :notified, receivers: []
+
+config :notified_phoenix,
+  to_list: {SlurpeeWeb.Router.Helpers, :notification_path, [SlurpeeWeb.Endpoint, :index]}
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

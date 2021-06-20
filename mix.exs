@@ -33,6 +33,7 @@ defmodule Slurpee.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:navigator, "~> 0.0.2"},
+      {:notified_phoenix, "~> 0.0.4"},
       {:phoenix, "~> 1.5.5"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_react, "~> 0.4"},
