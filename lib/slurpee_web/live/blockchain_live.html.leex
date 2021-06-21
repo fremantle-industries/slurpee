@@ -28,12 +28,13 @@
     <tr>
       <th scope="col" class="w-4/36 px-4 py-3 text-left">ID</th>
       <th scope="col" class="w-6/36 px-4 py-3 text-left">Name</th>
-      <th scope="col" class="w-3/36 px-4 py-3 text-left">Status</th>
+      <th scope="col" class="w-2/36 px-4 py-3 text-left">Status</th>
       <th scope="col" class="w-3/36 px-4 py-3 text-left">Network ID</th>
       <th scope="col" class="w-2/36 px-4 py-3 text-left">Chain ID</th>
       <th scope="col" class="w-2/36 px-4 py-3 text-left">Chain</th>
       <th scope="col" class="w-2/36 px-4 py-3 text-left">Testnet</th>
-      <th scope="col" class="w-8/36 px-4 py-3 text-left">RPC</th>
+      <th scope="col" class="w-7/36 px-4 py-3 text-left">RPC</th>
+      <th scope="col" class="w-2/36 px-4 py-3 text-left">Explorer</th>
       <th scope="col" class="w-3/36 px-4 py-3 text-left">Latest Block</th>
       <th scope="col" class="w-3/36 px-4 py-3 text-right">Actions</th>
     </tr>
@@ -50,6 +51,9 @@
           <td class="px-4 py-3 <%= !running?(b) && "text-gray-400"%>"><%= b.chain %></td>
           <td class="px-4 py-3 <%= !running?(b) && "text-gray-400"%>"><%= b.testnet %></td>
           <td class="px-4 py-3 <%= !running?(b) && "text-gray-400"%>"><%= b.rpc %></td>
+          <td class="px-4 py-3 <%= !running?(b) && "text-gray-400"%>">
+            <%= explorer_url(b.explorer) %>
+          </td>
           <td class="px-4 py-3 <%= !running?(b) && "text-gray-400"%>">-</td>
           <td class="px-4 py-3 text-right">
             <%= content_tag(

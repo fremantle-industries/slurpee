@@ -25,9 +25,9 @@ config :slurpee, SlurpeeWeb.Endpoint,
 config :ethereumex, client_type: :http
 
 # Slurp
-config :slurp, blockchains: %{ }
-config :slurp, new_head_subscriptions: %{ }
-config :slurp, log_subscriptions: %{ }
+config :slurp, blockchains: %{}
+config :slurp, new_head_subscriptions: %{}
+config :slurp, log_subscriptions: %{}
 
 # Navigation
 config :navigator,
@@ -35,30 +35,28 @@ config :navigator,
     slurpee: [
       %{
         label: "Slurpee",
-        link:
-          {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
+        link: {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
         class: "text-4xl"
       },
       %{
         label: "Blockchains",
-        link:
-          {SlurpeeWeb.Router.Helpers, :blockchain_path, [SlurpeeWeb.Endpoint, :index]},
+        link: {SlurpeeWeb.Router.Helpers, :blockchain_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "Log Subscriptions",
-        link:
-          {SlurpeeWeb.Router.Helpers, :log_subscription_path, [SlurpeeWeb.Endpoint, :index]},
+        link: {SlurpeeWeb.Router.Helpers, :log_subscription_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "New Head Subscriptions",
         link:
-          {SlurpeeWeb.Router.Helpers, :new_head_subscription_path, [SlurpeeWeb.Endpoint, :index]},
+          {SlurpeeWeb.Router.Helpers, :new_head_subscription_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "Transaction Subscriptions",
         link:
-          {SlurpeeWeb.Router.Helpers, :transaction_subscription_path, [SlurpeeWeb.Endpoint, :index]},
-      },
+          {SlurpeeWeb.Router.Helpers, :transaction_subscription_path,
+           [SlurpeeWeb.Endpoint, :index]}
+      }
     ]
   }
 
@@ -150,6 +148,7 @@ if config_env() == :dev do
         timeout: 5000,
         new_head_initial_history: 0,
         poll_interval_ms: 2_500,
+        explorer: {Slurp.ExplorerAdapters.Etherscan, "https://etherscan.io"},
         rpc: [
           "https://api.mycryptoapi.com/eth"
         ]
@@ -164,6 +163,7 @@ if config_env() == :dev do
         testnet: false,
         new_head_initial_history: 0,
         poll_interval_ms: 1_000,
+        explorer: {Slurp.ExplorerAdapters.BscScan, "https://bscscan.com"},
         rpc: [
           "https://bsc-dataseed1.binance.org"
         ]
@@ -179,6 +179,7 @@ if config_env() == :dev do
         timeout: 5000,
         new_head_initial_history: 0,
         poll_interval_ms: 2_500,
+        explorer: {Slurp.ExplorerAdapters.Polygonscan, "https://polygonscan.com"},
         rpc: [
           "https://rpc-mainnet.matic.network"
         ]
@@ -194,6 +195,7 @@ if config_env() == :dev do
         timeout: 5000,
         new_head_initial_history: 0,
         poll_interval_ms: 2_500,
+        explorer: {Slurp.ExplorerAdapters.Avascan, "https://avascan.info"},
         rpc: [
           "https://api.avax.network/ext/bc/C/rpc"
         ]

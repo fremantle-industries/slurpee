@@ -1,6 +1,7 @@
 defmodule SlurpeeWeb.BlockchainLive do
   use SlurpeeWeb, :live_view
   import SlurpeeWeb.ViewHelpers.SearchQueryHelper, only: [assign_search_query: 2]
+  import SlurpeeWeb.ViewHelpers.ExplorerUrlHelper, only: [explorer_url: 1]
 
   @impl true
   def mount(_params, _session, socket) do
