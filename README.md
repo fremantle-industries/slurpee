@@ -6,6 +6,8 @@
 
 A GUI frontend to manage blockchain ingestion with [`slurp`](https://github.com/fremantle-industries/slurp)
 
+[Built with Slurpee](./docs/BUILT_WITH_SLURPEE.md) | [Install](#install)
+
 ![recent heads and blocks](./docs/recent-blocks-and-events.png)
 
 ![blockchains](./docs/blockchains.png)
