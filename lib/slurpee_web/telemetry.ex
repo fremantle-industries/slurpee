@@ -25,8 +25,8 @@ defmodule SlurpeeWeb.Telemetry do
   def metrics do
     [
       # Slurp Metrics
-      last_value("slurp.blockchains.start", tags: [:id]),
-      last_value("slurp.blockchains.stop", tags: [:id]),
+      counter("slurp.blockchains.start", tags: [:id]),
+      counter("slurp.blockchains.stop", tags: [:id]),
 
       # Phoenix Metrics
       last_value("phoenix.endpoint.stop.duration",
