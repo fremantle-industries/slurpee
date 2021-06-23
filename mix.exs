@@ -40,7 +40,7 @@ defmodule Slurpee.MixProject do
       {:phoenix_live_view, "~> 0.15"},
       {:plug_cowboy, "~> 2.0"},
       # {:slurp, github: "fremantle-industries/slurp", branch: "main"},
-      {:slurp, "~> 0.0.6"},
+      {:slurp, "~> 0.0.7"},
       # {:stylish, github: "fremantle-industries/stylish", branch: "main"},
       {:stylish, "~> 0.0.4"},
       {:telemetry_metrics, "~> 0.4"},
