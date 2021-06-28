@@ -20,6 +20,10 @@ config :slurpee, SlurpeeWeb.Endpoint,
   pubsub_server: Slurpee.PubSub,
   live_view: [signing_salt: live_view_signing_salt]
 
+config :slurpee,
+       :prometheus_metrics_port,
+       {:system, :integer, "SLURPEE_PROMETHEUS_METRICS_PORT", 9568}
+
 # Blockchain Connections
 # TODO: The aim is to not need this at all. It should be dynamically configured
 config :ethereumex, client_type: :http

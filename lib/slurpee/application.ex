@@ -4,6 +4,8 @@ defmodule Slurpee.Application do
   use Application
 
   def start(_type, _args) do
+    Confex.resolve_env!(:slurpee)
+
     children = [
       SlurpeeWeb.Telemetry,
       {Phoenix.PubSub, name: Slurpee.PubSub},

@@ -29,6 +29,7 @@ defmodule Slurpee.MixProject do
 
   defp deps do
     [
+      {:confex, "~> 3.5"},
       {:deque, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
