@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "nprogress": "^0.2.0",
     "notified_phoenix": "file:../deps/notified_phoenix",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
@@ -16,14 +15,14 @@
     "phoenix_live_view": "file:../deps/phoenix_live_view",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-timeago": "^6.2.1"
+    "react-timeago": "^6.2.1",
+    "topbar": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
     "@babel/preset-react": "^7.13.13",
     "@tailwindcss/forms": "^0.3.2",
-    "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
     "@types/react-timeago": "^4.1.2",
