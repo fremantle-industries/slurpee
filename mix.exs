@@ -4,7 +4,7 @@ defmodule Slurpee.MixProject do
   def project do
     [
       app: :slurpee,
-      version: "0.0.11",
+      version: "0.0.12",
       elixir: "~> 1.11",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),

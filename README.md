@@ -23,7 +23,7 @@ Add `slurpee` to your list of dependencies in `mix.exs`
 ```elixir
 def deps do
   [
-    {:slurpee, "~> 0.0.11"}
+    {:slurpee, "~> 0.0.12"}
   ]
 end
 ```
