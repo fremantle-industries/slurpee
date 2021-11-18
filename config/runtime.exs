@@ -226,6 +226,7 @@ if config_env() == :dev do
             struct: Examples.Erc20.Events.Approval,
             handler: {Slurpee.EventHandler, :handle_event, []},
             abi: [
+              # token standard
               %{
                 "anonymous" => false,
                 "inputs" => [
@@ -241,6 +242,29 @@ if config_env() == :dev do
                   },
                   %{
                     "indexed" => false,
+                    "name" => "value",
+                    "type" => "uint256"
+                  }
+                ],
+                "name" => "Approval",
+                "type" => "event"
+              },
+              # fallback
+              %{
+                "anonymous" => false,
+                "inputs" => [
+                  %{
+                    "indexed" => true,
+                    "name" => "owner",
+                    "type" => "address"
+                  },
+                  %{
+                    "indexed" => true,
+                    "name" => "spender",
+                    "type" => "address"
+                  },
+                  %{
+                    "indexed" => true,
                     "name" => "value",
                     "type" => "uint256"
                   }
