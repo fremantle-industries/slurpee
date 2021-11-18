@@ -72,9 +72,17 @@ config :notified_phoenix,
   to_list: {SlurpeeWeb.Router.Helpers, :notification_path, [SlurpeeWeb.Endpoint, :index]}
 
 # Configures Elixir's Logger
-config :logger, :console,
-  format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+# config :logger, :console,
+#   format: "$time $metadata[$level] $message\n",
+#   metadata: [:request_id]
+config :logger, backends: [{LoggerFileBackend, :file_log}]
+config :logger, :file_log, path: "./log/#{config_env()}.log", metadata: [:blockchain_id]
+
+if System.get_env("DEBUG") == "true" do
+  config :logger, :file_log, level: :debug
+else
+  config :logger, :file_log, level: :info
+end
 
 # Optional Configuration
 if config_env() == :dev do

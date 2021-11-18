@@ -51,7 +51,8 @@ defmodule Slurpee.MixProject do
       {:floki, ">= 0.27.0", only: :test},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
-      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false}
+      {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
+      {:logger_file_backend, "~> 0.0.10", only: [:dev, :test]}
     ]
   end
 
