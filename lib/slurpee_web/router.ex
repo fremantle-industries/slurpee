@@ -17,19 +17,20 @@ defmodule SlurpeeWeb.Router do
   scope "/", SlurpeeWeb do
     pipe_through :browser
 
-    live "/", HomeLive, :index
-    live "/blockchains", BlockchainLive, :index
-    live "/log_subscriptions", LogSubscriptionLive, :index
-    live "/new_head_subscriptions", NewHeadSubscriptionLive, :index
-    live "/transactions", TransactionSubscriptionLive, :index
+    live_session :default do
+      live "/", HomeLive, :index
+      live "/blockchains", BlockchainLive, :index
+      live "/log_subscriptions", LogSubscriptionLive, :index
+      live "/new_head_subscriptions", NewHeadSubscriptionLive, :index
+      live "/transactions", TransactionSubscriptionLive, :index
+    end
   end
 
   scope "/", NotifiedPhoenix do
     pipe_through :browser
 
-    live("/notifications", ListLive, :index,
-      as: :notification,
-      layout: {SlurpeeWeb.LayoutView, :root}
-    )
+    live_session :notifications, root_layout: {SlurpeeWeb.LayoutView, :root} do
+      live("/notifications", ListLive, :index, as: :notification)
+    end
   end
 end
