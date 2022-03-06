@@ -231,54 +231,32 @@ if config_env() == :dev do
         "Approval(address,address,uint256)" => [
           %{
             enabled: true,
-            struct: Examples.Erc20.Events.Approval,
             handler: {Slurpee.EventHandler, :handle_event, []},
-            abi: [
-              # token standard
-              %{
-                "anonymous" => false,
-                "inputs" => [
-                  %{
-                    "indexed" => true,
-                    "name" => "owner",
-                    "type" => "address"
-                  },
-                  %{
-                    "indexed" => true,
-                    "name" => "spender",
-                    "type" => "address"
-                  },
-                  %{
-                    "indexed" => false,
-                    "name" => "value",
-                    "type" => "uint256"
-                  }
-                ],
-                "name" => "Approval",
-                "type" => "event"
-              },
-              # fallback
-              %{
-                "anonymous" => false,
-                "inputs" => [
-                  %{
-                    "indexed" => true,
-                    "name" => "owner",
-                    "type" => "address"
-                  },
-                  %{
-                    "indexed" => true,
-                    "name" => "spender",
-                    "type" => "address"
-                  },
-                  %{
-                    "indexed" => true,
-                    "name" => "value",
-                    "type" => "uint256"
-                  }
-                ],
-                "name" => "Approval",
-                "type" => "event"
+            event_mappings: [
+              {
+                Examples.Erc20.Events.Approval,
+                %{
+                  "anonymous" => false,
+                  "inputs" => [
+                    %{
+                      "indexed" => true,
+                      "name" => "owner",
+                      "type" => "address"
+                    },
+                    %{
+                      "indexed" => true,
+                      "name" => "spender",
+                      "type" => "address"
+                    },
+                    %{
+                      "indexed" => false,
+                      "name" => "value",
+                      "type" => "uint256"
+                    }
+                  ],
+                  "name" => "Approval",
+                  "type" => "event"
+                }
               }
             ]
           }

@@ -1,5 +1,4 @@
 # Slurpee
-
 [![Build Status](https://github.com/fremantle-industries/slurpee/workflows/test/badge.svg?branch=main)](https://github.com/fremantle-industries/slurpee/actions?query=workflow%3Atest)
 [![Coverage Status](https://coveralls.io/repos/github/fremantle-industries/slurpee/badge.svg?branch=main)](https://coveralls.io/github/fremantle-industries/slurpee?branch=main)
 [![hex.pm version](https://img.shields.io/hexpm/v/slurpee.svg?style=flat)](https://hex.pm/packages/slurpee)
