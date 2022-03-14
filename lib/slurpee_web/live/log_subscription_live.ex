@@ -73,7 +73,6 @@ defmodule SlurpeeWeb.LogSubscriptionLive do
       String.contains?(s.event_signature, search_term) ||
       String.contains?(s.hashed_event_signature, search_term) ||
       String.contains?(s.enabled |> to_string(), search_term) ||
-      String.contains?(s.struct |> Atom.to_string(), search_term) ||
       String.contains?(s.handler |> inspect(), search_term)
     end)
   end

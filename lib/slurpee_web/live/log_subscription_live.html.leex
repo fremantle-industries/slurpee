@@ -13,22 +13,32 @@
       <th scope="col" class="w-8/36 px-4 py-2 text-left">Event Signature</th>
       <th scope="col" class="w-5/36 px-4 py-2 text-left">Hashed Event Signature</th>
       <th scope="col" class="w-2/36 px-4 py-2 text-left">Enabled</th>
-      <th scope="col" class="w-8/36 px-4 py-2 text-left">Struct</th>
       <th scope="col" class="w-8/36 px-4 py-2 text-left">Handler</th>
-      <th scope="col" class="w-1/36 px-4 py-2 text-left">ABI</th>
+      <th scope="col" class="w-8/36 px-4 py-2 text-left">Events</th>
     </tr>
   </thead>
   <tbody>
     <%= if Enum.any?(@log_subscriptions) do %>
       <%= for s <- @log_subscriptions do %>
         <tr class="hover:bg-gray-50 border-t border-b group">
-          <td scope="row" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.blockchain_id %></td>
-          <td title="<%= s.event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= ellipsis(s.event_signature, 50) %></td>
-          <td title="<%= s.hashed_event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.hashed_event_signature |> String.slice(0..18) %>...</td>
-          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.enabled %></td>
-          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.struct %></td>
-          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.handler |> inspect %></td>
-          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>"><%= s.abi |> Enum.count() %></td>
+          <td scope="row" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= s.blockchain_id %>
+          </td>
+          <td title="<%= s.event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= ellipsis(s.event_signature, 50) %>
+          </td>
+          <td title="<%= s.hashed_event_signature %>" class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= s.hashed_event_signature |> String.slice(0..18) %>...
+          </td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= s.enabled %>
+          </td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= s.handler |> inspect %>
+          </td>
+          <td class="px-4 py-3 <%= !s.enabled && "text-gray-400"%>">
+            <%= s.event_mappings |> Enum.map(fn {s, _abi} -> Atom.to_string(s) end) |> Enum.join(", ") %>
+          </td>
         </tr>
       <% end %>
     <% else %>
