@@ -35,3 +35,6 @@ npm-debug.log
 
 # Environment switcher
 .envrc
+
+# Logs
+log/*
