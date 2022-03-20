@@ -12,11 +12,11 @@
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <header class="bg-gray-50 py-4 px-4">
-      <div class="flex justify-between items-center">
+    <header class="flex justify-between px-4 py-4 bg-gray-50">
+      <div class="space-y-4">
         <%= render Navigator, "horizontal.html", conn: @conn %>
-        <%= live_render(@conn, NotifiedPhoenix.BadgeLive, []) %>
       </div>
+      <%= live_render(@conn, NotifiedPhoenix.BadgeLive, []) %>
     </header>
     <main role="main" class="mx-4 py-4">
       <%= @inner_content %>

@@ -39,25 +39,25 @@ config :navigator,
     slurpee: [
       %{
         label: "Slurpee",
-        link: {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
+        to: {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
         class: "text-4xl"
       },
       %{
         label: "Blockchains",
-        link: {SlurpeeWeb.Router.Helpers, :blockchain_path, [SlurpeeWeb.Endpoint, :index]}
+        to: {SlurpeeWeb.Router.Helpers, :blockchain_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "Log Subscriptions",
-        link: {SlurpeeWeb.Router.Helpers, :log_subscription_path, [SlurpeeWeb.Endpoint, :index]}
+        to: {SlurpeeWeb.Router.Helpers, :log_subscription_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "New Head Subscriptions",
-        link:
+        to:
           {SlurpeeWeb.Router.Helpers, :new_head_subscription_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "Transaction Subscriptions",
-        link:
+        to:
           {SlurpeeWeb.Router.Helpers, :transaction_subscription_path,
            [SlurpeeWeb.Endpoint, :index]}
       }
