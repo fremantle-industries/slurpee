@@ -34,13 +34,20 @@ config :slurp, new_head_subscriptions: %{}
 config :slurp, log_subscriptions: %{}
 
 # Navigation
+config :navigator, base_class: "text-black border-b-2 border-transparent hover:text-opacity-75"
+config :navigator, active_class: "border-b-2 border-black"
+
 config :navigator,
   links: %{
     slurpee: [
       %{
         label: "Slurpee",
-        to: {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]},
+        to: {SlurpeeWeb.Router.Helpers, :redirect_path, [SlurpeeWeb.Endpoint, [to: "/home", type: :permanent]]},
         class: "text-4xl"
+      },
+      %{
+        label: "Home",
+        to: {SlurpeeWeb.Router.Helpers, :home_path, [SlurpeeWeb.Endpoint, :index]}
       },
       %{
         label: "Blockchains",

@@ -1,5 +1,6 @@
 defmodule SlurpeeWeb.Router do
   use SlurpeeWeb, :router
+  import Redirect
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,11 +15,13 @@ defmodule SlurpeeWeb.Router do
     plug :accepts, ["json"]
   end
 
+  redirect "/", "/home", :permanent
+
   scope "/", SlurpeeWeb do
     pipe_through :browser
 
     live_session :default do
-      live "/", HomeLive, :index
+      live "/home", HomeLive, :index
       live "/blockchains", BlockchainLive, :index
       live "/log_subscriptions", LogSubscriptionLive, :index
       live "/new_head_subscriptions", NewHeadSubscriptionLive, :index
