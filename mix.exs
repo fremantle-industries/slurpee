@@ -35,7 +35,7 @@ defmodule Slurpee.MixProject do
       {:jason, "~> 1.0"},
       {:navigator, "~> 0.0.8"},
       {:notified_phoenix, "~> 0.0.7"},
-      {:phoenix, "~> 1.6.0"},
+      {:phoenix, "~> 1.7.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_react, "~> 0.4.1"},
       {:phoenix_live_view, "~> 0.17"},
